@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gestão de Doações</title>
+    <meta name="description" content="Acesse sua conta na plataforma de gestão de doações e continue fazendo a diferença.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: "#faf5ff",
+                            100: "#f3e8ff",
+                            500: "#8b5cf6",
+                            600: "#7c3aed",
+                            700: "#6d28d9"
+                        },
+                        gray: {
+                            50: "#f9fafb",
+                            100: "#f3f4f6",
+                            200: "#e5e7eb",
+                            300: "#d1d5db",
+                            400: "#9ca3af",
+                            500: "#6b7280",
+                            600: "#4b5563",
+                            700: "#374151",
+                            800: "#1f2937",
+                            900: "#111827"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "system-ui", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+        
+        .login-gradient {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.1), 0 10px 10px -5px rgba(139, 92, 246, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans">
+    <!-- Main Content -->
+    <main class="min-h-screen flex items-center justify-center px-4 py-8">
+        <div class="w-full max-w-md">
+            <!-- Login Card -->
+            <div class="bg-white rounded-2xl p-8 card-shadow">
+                <!-- Logo and Header -->
+                <div class="text-center mb-8">
+                    <div class="flex items-center justify-center space-x-2 mb-4">
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-hands-helping text-white text-xl"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800 mb-2">Acesse sua conta</h1>
+                    <p class="text-gray-600 text-sm">
+                        Entre para continuar fazendo a diferença
+                    </p>
+                </div>
+
+                <!-- Login Form -->
+                <form class="space-y-6">
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            Email
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                                placeholder="seu@email.com"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                            Senha
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+                                placeholder="Sua senha"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Remember Me and Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-300 rounded">
+                            <span class="ml-2 text-sm text-gray-600">Lembrar-me</span>
+                        </label>
+                        <a href="#" class="text-sm text-primary-600 hover:text-primary-500 transition-colors">
+                            Esqueceu a senha?
+                        </a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit"
+                        class="w-full bg-primary-500 text-white py-3 px-4 rounded-lg hover:bg-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors font-medium"
+                    >
+                        Entrar
+                    </button>
+
+                    <!-- Create Account Link -->
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600">
+                            Não tem uma conta? 
+                            <a href="#" class="text-primary-600 hover:text-primary-500 font-medium transition-colors">
+                                Criar conta
+                            </a>
+                        </p>
+                    </div>
+                </form>
+
+                <!-- Platform Explanation -->
+                <div class="mt-8 p-4 bg-primary-50 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-info-circle text-primary-500 mt-1"></i>
+                        <p class="text-sm text-primary-700">
+                            Conectamos doadores a organizações que precisam de ajuda, garantindo transparência e impacto real em cada doação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Illustration Section -->
+            <div class="mt-8 text-center">
+                <div class="bg-white rounded-2xl p-6 card-shadow">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-primary-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Solidariedade em Ação</h3>
+                    <p class="text-gray-600 text-sm">
+                        Sua doação transforma vidas e constrói um futuro melhor para todos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+                <p class="text-sm text-gray-600">
+                    &copy; 2024 Gestão de Doações. Todos os direitos reservados.
+                </p>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">
+                        Contato
+                    </a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">
+                        Termos de Uso
+                    </a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-primary-500 transition-colors">
+                        Privacidade
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginForm = document.querySelector("form");
+            
+            loginForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                
+                // Simulate login process
+                if (email && password) {
+                    // Show loading state
+                    const submitButton = loginForm.querySelector("button[type='submit']");
+                    const originalText = submitButton.textContent;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
+                    submitButton.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        alert("Login realizado com sucesso! Redirecionando...");
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }, 1500);
+                }
+            });
+            
+            // Prevent default anchor behavior
+            const links = document.querySelectorAll("a");
+            links.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    if (this.getAttribute("href") === "#") {
+                        e.preventDefault();
+                        const linkText = this.textContent.trim();
+                        
+                        if (linkText === "Criar conta") {
+                            alert("Redirecionando para página de cadastro...");
+                        } else if (linkText === "Esqueceu a senha?") {
+                            alert("Redirecionando para recuperação de senha...");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
