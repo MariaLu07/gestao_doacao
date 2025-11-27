@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Doação - MarketSolidário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-light: #E8F5E9;
+            --primary-dark: #388E3C;
+            --secondary: #2196F3;
+            --secondary-light: #E3F2FD;
+            --accent: #9C27B0;
+            --text: #333333;
+            --text-light: #666666;
+            --background: #F9F9F9;
+            --white: #FFFFFF;
+            --border: #E0E0E0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px 16px;
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text);
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .confirmation-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .confirmation-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-title i {
+            color: var(--primary);
+        }
+        
+        /* Campaign Summary */
+        .campaign-org {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .org-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .org-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .org-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .campaign-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .campaign-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .donation-amount {
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .donation-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .donation-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Donor Information */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .payment-option {
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .payment-option.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: var(--secondary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .payment-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .payment-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Continue Button */
+        .continue-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .continue-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    MarketSolidário
+                </a>
+                <button class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar para a campanha
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h1 class="page-title">Confirme sua Doação</h1>
+            <p class="page-subtitle">Revise as informações abaixo e escolha a forma de pagamento para finalizar sua contribuição.</p>
+            
+            <div class="confirmation-container">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Campaign Summary -->
+                    <div class="card">
+                        <h2 class="card-title">
+                            <i class="fas fa-heart"></i>
+                            Resumo da Campanha
+                        </h2>
+                        
+                        <div class="campaign-org">
+                            <div class="org-logo">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="org-info">
+                                <h3>ONG Esperança</h3>
+                                <p>Organização sem fins lucrativos</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="campaign-name">Ajuda a Famílias Carentes</h3>
+                        <p class="campaign-description">
+                            Campanha para arrecadar fundos para famílias em situação de vulnerabilidade social, fornecendo alimentos, roupas e materiais de higiene para comunidades carentes da região metropolitana.
+                        </p>
+                        
+                        <div class="donation-amount">
+                            <div class="donation-label">Valor da sua doação</div>
+                            <div class="donation-value">R$ 50,00</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Donor Information -->
+                    <div class="card">
+                        <h2 class="card-title">
+                            <i class="fas fa-user"></i>
+                            Informações do Doador
+                        </h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="fullname">Nome completo</label>
+                            <input type="text" id="fullname" class="form-input" value="Maria Silva Santos" placeholder="Seu nome completo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="email">E-mail</label>
+                            <input type="email" id="email" class="form-input" value="maria.silva@email.com" placeholder="Seu e-mail">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Telefone</label>
+                            <input type="tel" id="phone" class="form-input" value="(11) 98765-4321" placeholder="Seu telefone">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Payment Methods -->
+                    <div class="card">
+                        <h2 class="card-title">
+                            <i class="fas fa-credit-card"></i>
+                            Escolha o Método de Pagamento
+                        </h2>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-option selected" data-method="credit">
+                                <div class="payment-icon">
+                                    <i class="far fa-credit-card"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <h4>Cartão de Crêdito</h4>
+                                    <p>Pague em até 12x no cartão</p>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-option" data-method="pix">
+                                <div class="payment-icon">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <h4>PIX</h4>
+                                    <p>Pagamento instantâneo</p>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-option" data-method="boleto">
+                                <div class="payment-icon">
+                                    <i class="fas fa-barcode"></i>
+                                </div>
+                                <div class="payment-info">
+                                    <h4>Boleto Bancário</h4>
+                                    <p>Pagamento em até 3 dias úteis</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="continue-btn">
+                            <i class="fas fa-lock"></i>
+                            Continuar para o Pagamento
+                        </button>
+                    </div>
+                    
+                    <!-- Security Info -->
+                    <div class="card">
+                        <h2 class="card-title">
+                            <i class="fas fa-shield-alt"></i>
+                            Sua Doação é Segura
+                        </h2>
+                        <p>Utilizamos criptografia de ponta a ponta para proteger suas informações. Seus dados financeiros nunca são armazenados em nossos servidores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Dúvidas Frequentes</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 MarketSolidário. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Payment method selection
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Back button functionality
+            const backButton = document.querySelector('.back-btn');
+            backButton.addEventListener('click', function() {
+                alert('Voltando para a página da campanha...');
+                // In a real implementation, this would redirect to the campaign page
+                // window.history.back() or specific URL
+            });
+            
+            // Continue button functionality
+            const continueButton = document.querySelector('.continue-btn');
+            continueButton.addEventListener('click', function() {
+                const selectedMethod = document.querySelector('.payment-option.selected').getAttribute('data-method');
+                alert(`Redirecionando para o pagamento via ${getPaymentMethodName(selectedMethod)}...`);
+                // In a real implementation, this would redirect to the payment gateway
+            });
+            
+            function getPaymentMethodName(method) {
+                switch(method) {
+                    case 'credit': return 'Cartão de Crédito';
+                    case 'pix': return 'PIX';
+                    case 'boleto': return 'Boleto Bancário';
+                    default: return 'Método de Pagamento';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
