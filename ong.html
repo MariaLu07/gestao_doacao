@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard ONG - Gestão de Doações</title>
+    <meta name="description" content="Painel administrativo para organizações não governamentais">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: "#f0fdf4",
+                            100: "#dcfce7",
+                            500: "#22c55e",
+                            600: "#16a34a",
+                            700: "#15803d"
+                        },
+                        gray: {
+                            50: "#f9fafb",
+                            100: "#f3f4f6",
+                            200: "#e5e7eb",
+                            300: "#d1d5db",
+                            400: "#9ca3af",
+                            500: "#6b7280",
+                            600: "#4b5563",
+                            700: "#374151",
+                            800: "#1f2937",
+                            900: "#111827"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "system-ui", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+        
+        .card-shadow {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+        }
+        
+        .status-active {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        
+        .status-inactive {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-hands-helping text-white"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-gray-800">Gestão de Doações</span>
+                        <span class="text-sm text-primary-600 font-medium ml-2">Painel ONG</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-3 bg-primary-50 rounded-lg px-4 py-2">
+                        <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-building text-white text-sm"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700" id="ongName">ONG Esperança Viva</span>
+                    </div>
+                    <button class="text-gray-500 hover:text-gray-700 transition-colors">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="text-gray-500 hover:text-gray-700 transition-colors">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- ONG Profile Section -->
+        <section class="bg-white rounded-2xl card-shadow p-6 mb-8">
+            <div class="flex items-start justify-between mb-6">
+                <h1 class="text-2xl font-bold text-gray-800">Perfil da Organização</h1>
+                <button class="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors font-medium flex items-center space-x-2">
+                    <i class="fas fa-edit"></i>
+                    <span>Editar Perfil</span>
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Basic Info -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Informações Básicas</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">Nome da Organização</label>
+                            <p class="text-gray-800 font-medium" id="profileNome">ONG Esperança Viva</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-1">Telefone</label>
+                                <p class="text-gray-800" id="profileTelefone">(11) 99999-9999</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-600 mb-1">CNPJ</label>
+                                <p class="text-gray-800" id="profileCNPJ">12.345.678/0001-90</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">E-mail</label>
+                            <p class="text-gray-800" id="profileEmail">contato@ongesperancaviva.org.br</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Sobre a Organização</h3>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">Descrição</label>
+                        <p class="text-gray-800 leading-relaxed" id="profileDescricao">
+                            Organização sem fins lucrativos dedicada a ajudar famílias em situação de vulnerabilidade social através de programas de alimentação, educação e assistência social. Atuamos há mais de 10 anos na região metropolitana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-2xl card-shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Arrecadado</p>
+                        <p class="text-2xl font-bold text-gray-800" id="totalArrecadado">R$ 157.800,00</p>
+                    </div>
+                    <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-money-bill-wave text-primary-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl card-shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Campanhas Ativas</p>
+                        <p class="text-2xl font-bold text-gray-800" id="campanhasAtivas">3</p>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-bullhorn text-blue-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl card-shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Doadores</p>
+                        <p class="text-2xl font-bold text-gray-800" id="totalDoadores">247</p>
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-users text-green-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl card-shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Meta do Mês</p>
+                        <p class="text-2xl font-bold text-gray-800" id="metaMes">R$ 25.000,00</p>
+                    </div>
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-target text-purple-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campaigns Section -->
+        <section class="bg-white rounded-2xl card-shadow p-6 mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Minhas Campanhas</h2>
+                <button class="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors font-medium flex items-center space-x-2" id="createCampaignBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Criar Nova Campanha</span>
+                </button>
+            </div>
+
+            <!-- Campaigns Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-600">Nome da Campanha</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-600">Descrição</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-600">Quantia Total</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-600">Data Final</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-600">Situação</th>
+                            <th class="text-left py-3 px-4 text-sm font-semibold text-gray-600">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="campaignsTableBody">
+                        <!-- Campaign rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Campaign Cards (Alternative View) -->
+        <section class="bg-white rounded-2xl card-shadow p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Visão Detalhada das Campanhas</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6" id="campaignsCardsContainer">
+                <!-- Campaign cards will be generated here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-hands-helping text-white"></i>
+                        </div>
+                        <span class="text-lg font-bold text-gray-800">Gestão de Doações</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Plataforma dedicada a conectar organizações com doadores.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">Organização</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Dashboard</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Relatórios</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Configurações</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">Suporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Central de Ajuda</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Contato</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Documentação</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-500 text-sm transition-colors">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 mt-8 pt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    &copy; 2024 Gestão de Doações. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample data for ONG
+        const ongData = {
+            "id": 1,
+            "nome": "ONG Esperança Viva",
+            "telefone": "(11) 99999-9999",
+            "email": "contato@ongesperancaviva.org.br",
+            "cnpj": "12.345.678/0001-90",
+            "descricao": "Organização sem fins lucrativos dedicada a ajudar famílias em situação de vulnerabilidade social através de programas de alimentação, educação e assistência social. Atuamos há mais de 10 anos na região metropolitana."
+        };
+
+        // Sample campaigns data for this ONG
+        const ongCampaigns = [
+            {
+                "id": 1,
+                "nome": "Alimentação para Famílias Carentes",
+                "descricao": "Fornecimento de cestas básicas mensais para 200 famílias em situação de vulnerabilidade",
+                "quantia_total": 50000,
+                "quantia_arrecadada": 32500,
+                "data_inicio": "2024-01-15",
+                "data_fim": "2024-12-31",
+                "situacao": "ativa",
+                "categoria": "Alimentação",
+                "doadores": 145
+            },
+            {
+                "id": 2,
+                "nome": "Educação Infantil Comunitária",
+                "descricao": "Programa de reforço escolar e atividades extracurriculares para crianças de 6 a 12 anos",
+                "quantia_total": 75000,
+                "quantia_arrecadada": 45200,
+                "data_inicio": "2024-02-01",
+                "data_fim": "2024-11-30",
+                "situacao": "ativa",
+                "categoria": "Educação",
+                "doadores": 89
+            },
+            {
+                "id": 3,
+                "nome": "Kit Inverno 2024",
+                "descricao": "Distribuição de cobertores e agasalhos para população em situação de rua",
+                "quantia_total": 30000,
+                "quantia_arrecadada": 30000,
+                "data_inicio": "2024-04-01",
+                "data_fim": "2024-06-30",
+                "situacao": "encerrada",
+                "categoria": "Assistência Social",
+                "doadores": 203
+            },
+            {
+                "id": 4,
+                "nome": "Natal Solidário",
+                "descricao": "Campanha de arrecadação para ceia de natal e brinquedos para crianças carentes",
+                "quantia_total": 40000,
+                "quantia_arrecadada": 12500,
+                "data_inicio": "2024-10-01",
+                "data_fim": "2024-12-20",
+                "situacao": "ativa",
+                "categoria": "Eventos",
+                "doadores": 67
+            },
+            {
+                "id": 5,
+                "nome": "Reforma do Centro Comunitário",
+                "descricao": "Ampliação e reforma do espaço para atender mais pessoas da comunidade",
+                "quantia_total": 120000,
+                "quantia_arrecadada": 37800,
+                "data_inicio": "2024-03-15",
+                "data_fim": "2024-08-31",
+                "situacao": "ativa",
+                "categoria": "Infraestrutura",
+                "doadores": 156
+            }
+        ];
+
+        // Utility functions
+        function formatCurrency(value) {
+            return new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            }).format(value);
+        }
+
+        function formatDate(dateString) {
+            const options = { day: "numeric", month: "long", year: "numeric" };
+            return new Date(dateString).toLocaleDateString("pt-BR", options);
+        }
+
+        function getStatusBadge(situacao) {
+            if (situacao === "ativa") {
+                return '<span class="status-active px-3 py-1 rounded-full text-xs font-medium">Ativa</span>';
+            } else {
+                return '<span class="status-inactive px-3 py-1 rounded-full text-xs font-medium">Encerrada</span>';
+            }
+        }
+
+        function calculateTotalArrecadado() {
+            return ongCampaigns.reduce((total, campaign) => total + campaign.quantia_arrecadada, 0);
+        }
+
+        function getActiveCampaignsCount() {
+            return ongCampaigns.filter(campaign => campaign.situacao === "ativa").length;
+        }
+
+        function getTotalDoadores() {
+            return ongCampaigns.reduce((total, campaign) => total + campaign.doadores, 0);
+        }
+
+        // DOM manipulation functions
+        function updateONGProfile() {
+            document.getElementById("ongName").textContent = ongData.nome;
+            document.getElementById("profileNome").textContent = ongData.nome;
+            document.getElementById("profileTelefone").textContent = ongData.telefone;
+            document.getElementById("profileCNPJ").textContent = ongData.cnpj;
+            document.getElementById("profileEmail").textContent = ongData.email;
+            document.getElementById("profileDescricao").textContent = ongData.descricao;
+        }
+
+        function updateStats() {
+            document.getElementById("totalArrecadado").textContent = formatCurrency(calculateTotalArrecadado());
+            document.getElementById("campanhasAtivas").textContent = getActiveCampaignsCount();
+            document.getElementById("totalDoadores").textContent = getTotalDoadores();
+            document.getElementById("metaMes").textContent = formatCurrency(25000);
+        }
+
+        function createCampaignTableRow(campaign) {
+            return `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="py-4 px-4">
+                        <div class="font-medium text-gray-800">${campaign.nome}</div>
+                        <div class="text-sm text-gray-500">${campaign.categoria}</div>
+                    </td>
+                    <td class="py-4 px-4 text-sm text-gray-600 max-w-xs">${campaign.descricao}</td>
+                    <td class="py-4 px-4 font-medium text-gray-800">${formatCurrency(campaign.quantia_total)}</td>
+                    <td class="py-4 px-4 text-sm text-gray-600">${formatDate(campaign.data_fim)}</td>
+                    <td class="py-4 px-4">${getStatusBadge(campaign.situacao)}</td>
+                    <td class="py-4 px-4">
+                        <div class="flex space-x-2">
+                            <button class="text-primary-500 hover:text-primary-600 transition-colors edit-campaign" data-id="${campaign.id}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="text-blue-500 hover:text-blue-600 transition-colors view-campaign" data-id="${campaign.id}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="text-red-500 hover:text-red-600 transition-colors delete-campaign" data-id="${campaign.id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function createCampaignCard(campaign) {
+            const progressPercentage = Math.min(Math.round((campaign.quantia_arrecadada / campaign.quantia_total) * 100), 100);
+            
+            return `
+                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="relative">
+                        <img 
+                            src="https://picsum.photos/400/200?random=${campaign.id + 10}" 
+                            alt="${campaign.nome}"
+                            class="w-full h-40 object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-3 right-3">
+                            ${getStatusBadge(campaign.situacao)}
+                        </div>
+                        <div class="absolute bottom-3 left-3">
+                            <span class="bg-white bg-opacity-90 text-gray-800 text-xs px-2 py-1 rounded font-medium">
+                                ${campaign.categoria}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">${campaign.nome}</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">${campaign.descricao}</p>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                <span>Arrecadado</span>
+                                <span class="font-medium">${formatCurrency(campaign.quantia_arrecadada)}</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: ${progressPercentage}%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>${progressPercentage}% da meta</span>
+                                <span>${campaign.doadores} doadores</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm text-gray-600">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-calendar"></i>
+                                <span>Até ${formatDate(campaign.data_fim)}</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-primary-500 hover:text-primary-600 transition-colors edit-campaign" data-id="${campaign.id}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-blue-500 hover:text-blue-600 transition-colors view-campaign" data-id="${campaign.id}">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCampaignsTable() {
+            const tableBody = document.getElementById("campaignsTableBody");
+            tableBody.innerHTML = ongCampaigns.map(campaign => createCampaignTableRow(campaign)).join("");
+        }
+
+        function renderCampaignsCards() {
+            const container = document.getElementById("campaignsCardsContainer");
+            container.innerHTML = ongCampaigns.map(campaign => createCampaignCard(campaign)).join("");
+        }
+
+        function initializeEventListeners() {
+            // Create campaign button
+            document.getElementById("createCampaignBtn").addEventListener("click", function() {
+                alert("Redirecionando para criação de nova campanha...");
+                // In a real app: window.location.href = "/ong/campanhas/nova";
+            });
+
+            // Campaign action buttons
+            document.addEventListener("click", function(e) {
+                if (e.target.closest(".edit-campaign")) {
+                    const campaignId = e.target.closest(".edit-campaign").getAttribute("data-id");
+                    const campaign = ongCampaigns.find(c => c.id == campaignId);
+                    alert(`Editando campanha: ${campaign.nome}`);
+                    // In a real app: window.location.href = `/ong/campanhas/editar/${campaignId}`;
+                }
+                
+                if (e.target.closest(".view-campaign")) {
