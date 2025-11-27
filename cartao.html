@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento com Cartão de Crédito</title>
+    <style>
+        :root {
+            --primary-color: #4a6cf7;
+            --primary-dark: #3a5ce5;
+            --text-color: #333;
+            --light-gray: #f5f7fa;
+            --border-color: #e1e5eb;
+            --success-color: #28a745;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            transition: background-color 0.2s;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--light-gray);
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+        }
+        
+        /* Credit Card Preview */
+        .card-preview {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .credit-card {
+            width: 350px;
+            height: 220px;
+            background: linear-gradient(135deg, #4a6cf7, #3a5ce5);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffd166, #ffb347);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .card-number {
+            font-size: 22px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-family: monospace;
+        }
+        
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        
+        .card-holder, .card-expiry {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-label {
+            font-size: 10px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .card-circles {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Payment Form */
+        .payment-form {
+            flex: 1;
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Donation Amount */
+        .donation-amount {
+            background-color: var(--light-gray);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .amount-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .amount-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .security-notice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lock-icon {
+            color: var(--success-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">DoaçãoOnline</a>
+                <button class="back-btn">
+                    <span>←</span> Voltar
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="card-preview">
+                <div class="credit-card">
+                    <div class="card-chip"></div>
+                    <div class="card-number">•••• •••• •••• ••••</div>
+                    <div class="card-details">
+                        <div class="card-holder">
+                            <div class="card-label">NOME NO CARTÃO</div>
+                            <div class="card-value">SEU NOME AQUI</div>
+                        </div>
+                        <div class="card-expiry">
+                            <div class="card-label">VALIDADE</div>
+                            <div class="card-value">MM/AA</div>
+                        </div>
+                    </div>
+                    <div class="card-circles"></div>
+                </div>
+            </div>
+            
+            <div class="payment-form">
+                <h2 class="form-title">Pagamento com Cartão</h2>
+                
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="card-number">Número do cartão</label>
+                        <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-name">Nome impresso no cartão</label>
+                        <input type="text" id="card-name" class="form-control" placeholder="Como aparece no cartão">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Data de validade (MM/AA)</label>
+                            <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA" maxlength="5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="card-cvv">Código de segurança (CVV)</label>
+                            <input type="text" id="card-cvv" class="form-control" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    
+                    <div class="donation-amount">
+                        <div class="amount-label">Valor da doação</div>
+                        <div class="amount-value">R$ 50,00</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Confirmar Pagamento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="security-notice">
+                <span class="lock-icon">🔒</span>
+                <span>Pagamento criptografado e seguro</span>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Formatação automática do número do cartão
+        document.getElementById('card-number').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ').substr(0, 19) || value;
+            e.target.value = formattedValue;
+            
+            // Atualiza o cartão visual
+            document.querySelector('.card-number').textContent = formattedValue || '•••• •••• •••• ••••';
+        });
+        
+        // Formatação automática da data de validade
+        document.getElementById('card-expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            if (value.length >= 2) {
+                value = value.substr(0, 2) + '/' + value.substr(2, 2);
+            }
+            e.target.value = value;
+            
+            // Atualiza o cartão visual
+            document.querySelector('.card-expiry .card-value').textContent = value || 'MM/AA';
+        });
+        
+        // Atualiza o nome no cartão visual
+        document.getElementById('card-name').addEventListener('input', function(e) {
+            document.querySelector('.card-holder .card-value').textContent = e.target.value || 'SEU NOME AQUI';
+        });
+        
+        // Previne o envio do formulário
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pagamento processado com sucesso!');
+        });
+        
+        // Simula o botão de voltar
+        document.querySelector('.back-btn').addEventListener('click', function() {
+            if (confirm('Deseja voltar para a página anterior?')) {
+                window.history.back();
+            }
+        });
+    </script>
+</body>
+</html>
