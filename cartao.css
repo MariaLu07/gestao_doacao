@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #22c55e;
+    padding: 15px 0;
+    color: #fff;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #c8ffcd;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.profile-icon {
+    margin-left: 20px;
+}
+
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #c8ffcd;
+    object-fit: cover;
+}
+
+.main-content {
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+}
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+}
+.card-preview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.credit-card {
+    width: 350px;
+    height: 220px;
+    background: linear-gradient(135deg, #22c55e, #3a5ce5);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    position: relative;
+}
+.card-chip {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(135deg, #ffd166, #ffb347);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.card-number {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-family: monospace;
+}
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.card-holder, .card-expiry {
+    display: flex;
+    flex-direction: column;
+}
+.card-label {
+    font-size: 10px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+.card-value {
+    font-weight: bold;
+}
+.card-circles {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+}
+.payment-form {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+}
+.form-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+.form-row .form-group {
+    flex: 1;
+}
+.donation-amount {
+    margin: 25px 0;
+}
+.submit-btn {
+    width: 100%;
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+footer {
+    background: #bbf1b9;
+    border-top: 1px solid #ddd;
+    margin-top: 40px;
+    padding: 30px 0;
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px;
+}
+
+footer a {
+    display: block;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: #555;
+}

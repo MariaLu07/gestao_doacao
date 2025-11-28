@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campanhas - Market Solidário</title>
+    <link rel="stylesheet" href="doacao.css">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="inicio.html" class="logo">Doa<span>System</span></a>
+
+            <ul class="nav-links">
+                <li><a href="inicio.html">Início</a></li>
+                <li><a href="doacoes.html">Minhas doações</a></li>
+                <li><a href="criacao.html">Criar campanha</a></li>
+            </ul>
+
+            <div class="profile-icon">
+                <a href="doador.html">
+                    <img src="perfil.jpg" alt="Perfil">
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Faça a Diferença com uma Doação</h1>
+        <p>Encontre campanhas que precisam da sua ajuda e contribua para causas importantes.</p>
+    </div>
+</section>
+
+<section class="container search-section">
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar campanha...">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="filters">
+        <div class="filter-group">
+            <label>Categoria</label>
+            <select>
+                <option>Todas</option>
+                <option>Animais</option>
+                <option>Saúde</option>
+                <option>Educação</option>
+                <option>Meio ambiente</option>
+                <option>Emergência</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>ONG</label>
+            <select>
+                <option>Todas</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Meta</label>
+            <select>
+                <option>Qualquer</option>
+                <option>Até R$1000</option>
+                <option>De R$1001 a R$5000</option>
+                <option>Acima de R$5001</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Prazo</label>
+            <select>
+                <option>Todos</option>
+                <option>Mais recentes</option>
+                <option>Mais próximas do fim</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<section class="container campaigns-section">
+
+    <div class="campaigns-header">
+        <h2>Campanhas Disponíveis</h2>
+        <div class="campaigns-count">12 campanhas encontradas</div>
+        <select>
+            <option>Mais recentes</option>
+        </select>
+    </div>
+
+    <div class="campaigns-grid">
+
+        <div class="campaign-card">
+            <div class="campaign-image" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c')"></div>
+            <div class="campaign-content">
+                <h3 class="campaign-title">Ajuda a Famílias Carentes</h3>
+                <p>Campanha para arrecadar alimentos e itens básicos.</p>
+
+                <div class="campaign-meta">
+                    <span><i class="fas fa-user"></i> João Silva</span>
+                    <span><i class="fas fa-hands-helping"></i> ONG Esperança</span>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 69%;"></div>
+                    </div>
+                </div>
+
+                <div class="days-left"><i class="fas fa-clock"></i> 15 dias restantes</div>
+
+                <a href="doacao2.html"><button class="btn-donate">Doar Agora</button></a>
+            </div>
+        </div>
+
+        <div class="campaign-card">
+            <div class="campaign-image" style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644')"></div>
+            <div class="campaign-content">
+                <h3 class="campaign-title">Educação para Crianças</h3>
+                <p>Compra de materiais escolares para crianças de baixa renda.</p>
+
+                <div class="campaign-meta">
+                    <span><i class="fas fa-user"></i> Maria Oliveira</span>
+                    <span><i class="fas fa-hands-helping"></i> Criança Feliz</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 78%;"></div>
+                </div>
+
+                <div class="days-left"><i class="fas fa-clock"></i> 8 dias restantes</div>
+
+                <button class="btn-donate">Doar Agora</button>
+            </div>
+        </div>
+
+        <div class="campaign-card">
+            <div class="campaign-image" style="background-image:url('https://images.unsplash.com/photo-1415369629372-26f2fe60c467')"></div>
+            <div class="campaign-content">
+                <h3 class="campaign-title">Reflorestamento Urbano</h3>
+                <p>Plantio de árvores em áreas urbanas.</p>
+
+                <div class="campaign-meta">
+                    <span><i class="fas fa-user"></i> Carlos Santos</span>
+                    <span><i class="fas fa-hands-helping"></i> Amigos da Terra</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+
+                <div class="days-left"><i class="fas fa-clock"></i> 22 dias restantes</div>
+
+                <button class="btn-donate">Doar Agora</button>
+            </div>
+        </div>
+
+        <div class="campaign-card">
+            <div class="campaign-image" style="background-image:url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e')"></div>
+            <div class="campaign-content">
+                <h3 class="campaign-title">Abrigo para Animais</h3>
+                <p>Construção de um novo abrigo para resgate de animais.</p>
+
+                <div class="campaign-meta">
+                    <span><i class="fas fa-user"></i> Ana Costa</span>
+                    <span><i class="fas fa-hands-helping"></i> Projeto Vida</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 83%;"></div>
+                </div>
+
+                <div class="days-left"><i class="fas fa-clock"></i> 5 dias restantes</div>
+
+                <button class="btn-donate">Doar Agora</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <strong>Gestão de Doações</strong>
+            <p>Conectando doadores a quem precisa.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Links</strong>
+            <a href="#">Início</a>
+            <a href="#">Campanhas</a>
+            <a href="#">Doações</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Suporte</strong>
+            <a href="#">Ajuda</a>
+            <a href="#">Contato</a>
+            <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Legal</strong>
+            <a href="#">Termos</a>
+            <a href="#">Privacidade</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

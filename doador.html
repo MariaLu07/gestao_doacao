@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard ONG - Gestão de Doações</title>
+    <link rel="stylesheet" href="ong.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="inicio.html" class="logo">Doa<span>System</span></a>
+
+            <ul class="nav-links">
+                <li><a href="inicio.html">Início</a></li>
+                <li><a href="doacoes.html">Minhas doações</a></li>
+                <li><a href="criacao.html">Criar campanha</a></li>
+            </ul>
+
+            <div class="profile-icon">
+                <a href="doador.html">
+                    <img src="perfil.jpg" alt="Perfil">
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="card">
+        <h2>Perfil do Doador</h2>
+
+        <div class="grid-2">
+            <div>
+                <h3>Informações Básicas</h3>
+                <p><strong>Nome:</strong> Seu nome completo</p>
+                <p><strong>Telefone:</strong> (11) 99999-9999</p>
+                <p><strong>CPF:</strong> 123.456.789-00</p>
+                <p><strong>Email:</strong> seuemail@gmail.com</p>
+            </div>
+
+            <div>
+                <h3>Descrição</h3>
+                <p>Apaixonado por transformar vidas através da solidariedade. Aqui você pode acompanhar suas doações e acompanhar o impacto que está fazendo no mundo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estatísticas -->
+    <div class="grid-4">
+
+        <div class="card">
+            <p>Total Arrecadado</p>
+            <h2>R$ 874,00</h2>
+        </div>
+
+        <div class="card">
+            <p>Campanhas Ativas</p>
+            <h2>1</h2>
+        </div>
+
+        <div class="card">
+            <p>Doadores</p>
+            <h2>32</h2>
+        </div>
+
+        <div class="card">
+            <p>Meta do Mês</p>
+            <h2>R$ 2000,00</h2>
+        </div>
+
+    </div>
+
+    <!-- Tabela de Campanhas -->
+    <div class="card">
+        <h2>Minhas Campanhas</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Quantia Total</th>
+                    <th>Data Final</th>
+                    <th>Situação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Doação para famílias atingidas pelas enchentes</td>
+                    <td>Fornecimento de cestas básicas para 200 famílias</td>
+                    <td>R$ 10.000</td>
+                    <td>31 de Dezembro</td>
+                    <td><span class="badge active">Ativa</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <strong>Gestão de Doações</strong>
+            <p>Conectando doadores a quem precisa.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Links</strong>
+            <a href="#">Início</a>
+            <a href="#">Campanhas</a>
+            <a href="#">Doações</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Suporte</strong>
+            <a href="#">Ajuda</a>
+            <a href="#">Contato</a>
+            <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Legal</strong>
+            <a href="#">Termos</a>
+            <a href="#">Privacidade</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

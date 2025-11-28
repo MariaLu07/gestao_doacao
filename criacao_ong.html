@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Campanha - MarketSolidário</title>
+    <link rel="stylesheet" href="criacao_ong.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="inicio_ong.html" class="logo">Doa<span>System</span></a>
+
+            <ul class="nav-links">
+                <li><a href="inicio_ong.html">Início</a></li>
+                <li><a href="doacao_ong.html">Campanhas</a></li>
+                <li><a href="criacao_ong.html">Criar campanha</a></li>
+            </ul>
+
+            <div class="profile-icon">
+                <a href="ong.html">
+                    <img src="perfil.jpg" alt="Perfil">
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    <main>
+        <div class="container">
+            <h1>Criar Nova Campanha</h1>
+            <p>Preencha as informações abaixo para criar uma nova campanha de arrecadação.</p>
+
+            <div class="card">
+                <div class="card-title">Informações da Campanha</div>
+                <label for="campaign-name">Nome da Campanha *</label>
+                <input type="text" id="campaign-name" placeholder="Digite um nome para sua campanha">
+
+                <label for="campaign-description">Descrição *</label>
+                <textarea id="campaign-description" placeholder="Descreva os objetivos da campanha"></textarea>
+
+                <label for="campaign-category">Categoria *</label>
+                <select id="campaign-category">
+                    <option value="">Selecione uma categoria</option>
+                    <option value="saude">Saúde</option>
+                    <option value="educacao">Educação</option>
+                    <option value="meio-ambiente">Meio Ambiente</option>
+                    <option value="animais">Animais</option>
+                    <option value="emergencia">Emergência</option>
+                    <option value="cultura">Cultura</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Detalhes da Campanha</div>
+                <label for="campaign-goal">Meta de Arrecadação (R$) *</label>
+                <input type="number" id="campaign-goal" placeholder="0,00" min="0" step="0.01">
+
+                <label for="campaign-start">Data de Início *</label>
+                <input type="date" id="campaign-start">
+
+                <label for="campaign-end">Data de Término *</label>
+                <input type="date" id="campaign-end">
+            </div>
+
+            <div class="card">
+                <div class="card-title">Imagem da Campanha</div>
+                <input type="file" id="campaign-image">
+            </div>
+
+            <div class="card">
+                <div class="card-title">Tipo de Doação Aceita</div>
+                <select>
+                    <option value="financial">Financeira</option>
+                    <option value="materials">Materiais</option>
+                    <option value="both" selected>Ambas</option>
+                </select>
+            </div>
+
+            <div style="margin-top:20px;">
+                <a href="campanha_criada_ong.html"><button class="btn-primary">Criar Campanha</button></a>
+                <a href="inicio_ong.html"><button class="btn-secondary">Cancelar</button></a>
+            </div>
+        </div>
+    </main>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-col">
+            <strong>Gestão de Doações</strong>
+            <p>Conectando doadores a quem precisa.</p>
+        </div>
+
+        <div class="footer-col">
+            <strong>Links</strong>
+            <a href="#">Início</a>
+            <a href="#">Campanhas</a>
+            <a href="#">Doações</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Suporte</strong>
+            <a href="#">Ajuda</a>
+            <a href="#">Contato</a>
+            <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-col">
+            <strong>Legal</strong>
+            <a href="#">Termos</a>
+            <a href="#">Privacidade</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

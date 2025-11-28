@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar ONG</title>
+    <link rel="stylesheet" href="cadastro_ong.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="introducao.html" class="logo">Doa<span>System</span></a>
+
+            <ul class="nav-links">
+                <li><a href="introducao.html">Início</a></li>
+                <li><a href="cadastro.html">Cadastrar Doador</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="cadastro-container">
+    <div class="cadastro-box">
+        <h2>Cadastrar ONG</h2>
+        <p>Preencha os dados abaixo para registrar sua conta!</p>
+
+        <form>
+            <label>Nome da ONG</label>
+            <input type="text" placeholder="Nome completo da ONG">
+
+            <label>CNPJ</label>
+            <input type="text" placeholder="00.000.000/0001-00">
+
+            <label>Telefone</label>
+            <input type="text" placeholder="(00) 00000-0000">
+
+            <label>Email</label>
+            <input type="email" placeholder="email@ong.com">
+
+            <label>Senha</label>
+            <input type="password" placeholder="Digite sua senha">
+
+            <label>Confirmar Senha</label>
+            <input type="password" placeholder="Confirme sua senha">
+
+            <div class="termos">
+                <input type="checkbox">
+                <span>Aceito os <a href="#">Termos de Uso</a></span>
+            </div>
+
+            <button class="btn-enviar" type="submit" formaction="ong_cadastro.html">Cadastrar</button>
+
+        </form>
+
+        <p class="login-text">Já possui conta? <a href="login_ong.html">Entrar</a></p>
+    </div>
+</section>
+
+</body>
+</html>

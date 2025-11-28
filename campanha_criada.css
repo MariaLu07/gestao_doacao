@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.confirmation-container {
+    background-color: white;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+    background-color: #e8f7ef;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkmark {
+    color: #28a745;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+h1 {
+    color: #28a745;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.message {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.donation-details {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.detail-value {
+    color: #333;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    font-size: 16px;
+    cursor: default;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+@media (min-width: 576px) {
+    .buttons-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .btn {
+        min-width: 180px;
+    }
+}
